@@ -1,63 +1,59 @@
 package part1.lessons16.task1;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class MyBasket implements Basket {
 
-    ArrayList arrayList = new ArrayList();
+
+    HashMap<String,Integer> products = new HashMap<>();
 
 
     @Override
     public void addProduct(String product, int quantity) {
-        arrayList.add(product);
-        arrayList.add(quantity);
+        products.put(product,quantity);
+
     }
 
     @Override
     public void removeProduct(String product) {
-        int index =arrayList.indexOf(product);
-        arrayList.remove(index+1);
-        arrayList.remove(product);
-
+        products.remove(product);
     }
 
     @Override
     public void updateProductQuantity(String product, int quantity) {
-        if (arrayList.contains(product)){
-            int index = arrayList.indexOf(product);
-            arrayList.set(index+1,quantity);
+        if (products.containsKey(product)){
+            products.replace(product,quantity);
         }
+
     }
 
     @Override
     public void clear() {
-        arrayList.clear();
-        System.out.println("Корзина пуста:"+arrayList);
+        products.clear();
+        //arrayList.clear();
+        //System.out.println("Корзина пуста:"+arrayList);
 
     }
 
     @Override
-    public List<String> getProducts() {
-        Iterator product = arrayList.iterator();
-        while (product.hasNext()) {
-            System.out.printf("%s %s \n", product.next(), product.next() + "шт. ");
-        }
-            System.out.println();
-            return arrayList;
+    public void getProducts() {
+        Set<String> keys= products.keySet();
+        Set<Integer> values = (Set<Integer>) products.values();
+        System.out.printf("Продукт : %s \n Значение : %d",keys,values);
+        return;
+
+
 
     }
 
     @Override
-    public int getProductQuantity(String product) {
-        if (arrayList.contains(product)){
-            int index = arrayList.indexOf(product);
-            System.out.println("Количество продуктов: "+product+ "="+arrayList.get(index));
-            return (Integer) arrayList.get(index+1);
+    public void getProductQuantity(String product) {
+        if (products.containsKey(product)){
+            System.out.println("Продукт: "+product +"количество  "+products.values());
         }else {
+            products.isEmpty();
             System.out.println("Корзина пуста");
-            return 0;
+            return;
         }
     }
 }

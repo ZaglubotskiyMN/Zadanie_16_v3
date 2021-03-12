@@ -1,7 +1,5 @@
 package part1.lessons16.task1;
 
-import java.util.List;
-
 public interface Basket {
     void addProduct(String product, int quantity);
 
@@ -11,8 +9,8 @@ public interface Basket {
 
     void clear();
 
-    List<String> getProducts();
+    void getProducts();
 
-    int getProductQuantity(String product);
+    void getProductQuantity(String product);
 
 }
