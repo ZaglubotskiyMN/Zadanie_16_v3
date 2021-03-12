@@ -30,26 +30,26 @@ public class MyBasket implements Basket {
     @Override
     public void clear() {
         products.clear();
-        //arrayList.clear();
-        //System.out.println("Корзина пуста:"+arrayList);
+
 
     }
 
     @Override
     public void getProducts() {
         Set<String> keys= products.keySet();
-        Set<Integer> values = (Set<Integer>) products.values();
-        System.out.printf("Продукт : %s \n Значение : %d",keys,values);
-        return;
-
-
-
+        ArrayList<Integer>values= new ArrayList<>(products.values());
+        if (products.isEmpty()){
+            System.out.println("Корзина пуста");
+        }else
+        System.out.println("Продукт: "+keys+"Количество: "+values);
+        //System.out.printf("Продукт : %s \n Значение : %d",keys,values);
     }
 
     @Override
     public void getProductQuantity(String product) {
         if (products.containsKey(product)){
-            System.out.println("Продукт: "+product +"количество  "+products.values());
+
+            System.out.println("Продукт: "+this.products +"\n Количество  ");
         }else {
             products.isEmpty();
             System.out.println("Корзина пуста");

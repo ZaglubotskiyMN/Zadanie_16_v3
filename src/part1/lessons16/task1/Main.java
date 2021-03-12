@@ -15,8 +15,10 @@ public class Main {
 	System.out.println("Update product quantity");
 		basketHashMap.updateProductQuantity("Milk",11);
 		basketHashMap.getProducts();
-		///basketHashMap.clear();
+		System.out.println("Количество продукта");
 		basketHashMap.getProductQuantity("Water");
+		basketHashMap.getProducts();
+		basketHashMap.clear();
 		basketHashMap.getProducts();
     }
 }
